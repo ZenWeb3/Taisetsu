@@ -1,4 +1,15 @@
-import { Navbar, Background, Hero, Terminal, Features } from "@/components";
+import {
+  Background,
+  Navbar,
+  Hero,
+  Terminal,
+  Features,
+  HowItWorks,
+  Pricing,
+  TechStack,
+  CTA,
+  Footer,
+} from "@/components";
 
 export default function Home() {
   return (
@@ -8,6 +19,11 @@ export default function Home() {
       <Hero />
       <Terminal />
       <Features />
+      <HowItWorks />
+      <Pricing />
+      <TechStack />
+      <CTA />
+      <Footer />
     </main>
   );
 }
