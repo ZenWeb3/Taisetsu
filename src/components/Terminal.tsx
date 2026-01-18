@@ -3,9 +3,9 @@ export default function Terminal() {
     <section className="animate-fade-in-up animate-delay-400 px-6 lg:px-16 pb-24 relative z-10">
       <div className="max-w-2xl mx-auto bg-[#0f0f12] border border-[#27272a] rounded-xl overflow-hidden">
         <div className="flex items-center gap-2 px-5 py-4 bg-[#141418] border-b border-[#27272a]">
-          <div className="w-3 h-3 rounded-full bg-zinc-700" />
-          <div className="w-3 h-3 rounded-full bg-zinc-700" />
-          <div className="w-3 h-3 rounded-full bg-zinc-700" />
+          <div className="w-3 h-3 rounded-full bg-red-800" />
+          <div className="w-3 h-3 rounded-full bg-purple-800" />
+          <div className="w-3 h-3 rounded-full bg-green-800" />
           <span className="flex-1 text-center font-mono text-xs text-zinc-500 tracking-wide">
             taisetsu — telegram
           </span>
@@ -34,7 +34,7 @@ export default function Terminal() {
           </div>
           <div className="text-white pl-5">
             Total: 142,380 requests → $142.38 USDC
-            <span className="inline-block w-2 h-4 bg-zinc-400 ml-0.5 align-middle cursor-blink" />
+            <span className="inline-block w-2 h-4 bg-purple-800 ml-0.5 align-middle cursor-blink" />
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-32 pb-16 relative z-10">
       <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-1.5 bg-[#141418] border border-[#27272a] rounded-full text-sm text-zinc-400 mb-8">
-        <span className="w-1.5 h-1.5 bg-green-700 rounded-full" />
+        <span className="w-1.5 h-1.5 bg-green-800 rounded-full" />
         Built on Cronos x402
       </div>
 
