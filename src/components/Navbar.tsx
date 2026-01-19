@@ -17,30 +17,22 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = open ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [open]);
 
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
+    const onKey = (e: any) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   return (
@@ -53,7 +45,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
-          <div className="flex items-center justify-between h-16 lg:h-18">
+          <div className="flex items-center justify-between h-16">
             <Link
               href="/"
               className="font-bold text-lg sm:text-xl tracking-tight hover:opacity-80 transition-opacity z-50"
@@ -64,19 +56,29 @@ export default function Navbar() {
             <ul className="hidden lg:flex items-center gap-8 xl:gap-10">
               {navLinks.map((item) => (
                 <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="text-zinc-400 text-sm font-medium hover:text-white transition-colors relative group"
-                  >
-                    {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
-                  </a>
+                  {item.href.startsWith("/") ? (
+                    <Link
+                      href={item.href}
+                      className="text-zinc-400 text-sm font-medium hover:text-white transition-colors relative group"
+                    >
+                      {item.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className="text-zinc-400 text-sm font-medium hover:text-white transition-colors relative group"
+                    >
+                      {item.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
 
             <div className="hidden lg:flex items-center gap-3">
-              <Link
+              <a
                 href="https://github.com/zenweb3/taisetsu"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -85,43 +87,19 @@ export default function Navbar() {
                 <Star className="w-4 h-4 text-amber-500" />
                 <span className="hidden xl:inline">Star on GitHub</span>
                 <span className="xl:hidden">Star</span>
-              </Link>
+              </a>
 
-              <Link
-                href="#"
+              <a
+                href="#how-it-works"
                 className="px-4 py-2.5 rounded-md text-sm font-semibold bg-white text-[#09090b] hover:bg-zinc-200 transition-all"
               >
                 Get Started
-              </Link>
-            </div>
-
-            <div className="hidden md:flex lg:hidden items-center gap-3">
-              <Link
-                href="https://github.com/zenweb3/taisetsu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-2 rounded-md text-sm font-semibold text-zinc-300 border border-[#27272a] hover:bg-[#1a1a1f] transition-all flex items-center gap-2"
-              >
-                <Star className="w-4 h-4 text-amber-500" />
-                Star
-              </Link>
-
-              <button
-                onClick={() => setOpen(!open)}
-                className="p-2 rounded-md hover:bg-[#1a1a1f] transition-colors"
-                aria-label="Toggle menu"
-              >
-                {open ? (
-                  <X className="w-5 h-5 text-zinc-300" />
-                ) : (
-                  <Menu className="w-5 h-5 text-zinc-300" />
-                )}
-              </button>
+              </a>
             </div>
 
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden p-2 -mr-2 rounded-md hover:bg-[#1a1a1f] transition-colors z-50"
+              className="lg:hidden p-2 -mr-2 rounded-md hover:bg-[#1a1a1f] transition-colors z-50"
               aria-label="Toggle menu"
             >
               {open ? (
@@ -166,13 +144,23 @@ export default function Navbar() {
                       transitionDelay: open ? `${index * 50 + 100}ms` : "0ms",
                     }}
                   >
-                    <a
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="block py-3 px-4 text-lg font-medium text-zinc-300 hover:text-white hover:bg-[#1a1a1f] rounded-lg transition-all"
-                    >
-                      {item.name}
-                    </a>
+                    {item.href.startsWith("/") ? (
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="block py-3 px-4 text-lg font-medium text-zinc-300 hover:text-white hover:bg-[#1a1a1f] rounded-lg transition-all"
+                      >
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="block py-3 px-4 text-lg font-medium text-zinc-300 hover:text-white hover:bg-[#1a1a1f] rounded-lg transition-all"
+                      >
+                        {item.name}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -184,7 +172,7 @@ export default function Navbar() {
               }`}
               style={{ transitionDelay: open ? "300ms" : "0ms" }}
             >
-              <Link
+              <a
                 href="https://github.com/zenweb3/taisetsu"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -193,15 +181,15 @@ export default function Navbar() {
               >
                 <Star className="w-4 h-4 text-amber-500" />
                 Star on GitHub
-              </Link>
+              </a>
 
-              <Link
-                href="#"
+              <a
+                href="#how-it-works"
                 onClick={() => setOpen(false)}
                 className="block w-full px-4 py-3 rounded-lg text-sm font-semibold bg-white text-[#09090b] text-center hover:bg-zinc-200 transition-all"
               >
                 Get Started
-              </Link>
+              </a>
             </div>
 
             <div
@@ -210,7 +198,7 @@ export default function Navbar() {
               }`}
               style={{ transitionDelay: open ? "400ms" : "0ms" }}
             >
-              <Link
+              <a
                 href="https://twitter.com/zenonchain"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -218,8 +206,8 @@ export default function Navbar() {
                 aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="https://discord.gg/zenfiweb3"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -227,8 +215,8 @@ export default function Navbar() {
                 aria-label="Discord"
               >
                 <SiDiscord className="w-5 h-5" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="https://github.com/zenweb3/taisetsu"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -236,7 +224,7 @@ export default function Navbar() {
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
