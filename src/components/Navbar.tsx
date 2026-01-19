@@ -64,13 +64,13 @@ export default function Navbar() {
             <ul className="hidden lg:flex items-center gap-8 xl:gap-10">
               {navLinks.map((item) => (
                 <li key={item.name}>
-                  <Link
+                  <a
                     href={item.href}
                     className="text-zinc-400 text-sm font-medium hover:text-white transition-colors relative group"
                   >
                     {item.name}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -166,13 +166,13 @@ export default function Navbar() {
                       transitionDelay: open ? `${index * 50 + 100}ms` : "0ms",
                     }}
                   >
-                    <Link
+                    <a
                       href={item.href}
                       onClick={() => setOpen(false)}
                       className="block py-3 px-4 text-lg font-medium text-zinc-300 hover:text-white hover:bg-[#1a1a1f] rounded-lg transition-all"
                     >
                       {item.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
