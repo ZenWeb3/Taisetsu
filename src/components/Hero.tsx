@@ -22,7 +22,7 @@ export default function Hero() {
           href="#"
           className="px-6 py-3.5 rounded-md text-base font-semibold bg-white text-[#09090b] hover:bg-zinc-200 hover:-translate-y-0.5 transition-all"
         >
-          Get Started →
+          Get Started 
         </Link>
         <Link
           href="#"
