@@ -14,7 +14,7 @@ export default function CTA() {
           href="#"
           className="inline-block px-6 py-3.5 rounded-md text-base font-semibold bg-white text-[#09090b] hover:bg-zinc-200 hover:-translate-y-0.5 transition-all"
         >
-          Launch App →
+          Launch App
         </Link>
       </div>
     </section>

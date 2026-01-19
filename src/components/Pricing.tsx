@@ -1,3 +1,4 @@
+import { Check } from "lucide-react";
 import Link from "next/link";
 
 const pricingFeatures = [
@@ -33,7 +34,7 @@ export default function Pricing() {
               key={feature}
               className="flex items-center gap-3 py-3 text-zinc-300 text-sm border-b border-[#27272a] last:border-b-0"
             >
-              <span className="text-white text-xs">✓</span>
+              <span className="text-white text-sm"><Check className="size-5"/></span>
               {feature}
             </li>
           ))}
