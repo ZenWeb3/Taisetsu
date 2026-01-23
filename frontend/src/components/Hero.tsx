@@ -19,7 +19,7 @@ export default function Hero() {
 
       <div className="animate-fade-in-up animate-delay-300 flex gap-3 flex-wrap justify-center">
         <Link
-          href="#"
+          href="https://t.me/@taisetsubot"
           className="px-6 py-3.5 rounded-md text-base font-semibold bg-white text-[#09090b] hover:bg-zinc-200 hover:-translate-y-0.5 transition-all"
         >
           Get Started 
