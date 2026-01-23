@@ -41,7 +41,7 @@ export default function Pricing() {
         </ul>
 
         <Link
-          href="#"
+          href="https://t.me/@taisetsubot"
           className="block w-full px-6 py-3.5 rounded-md text-base font-semibold bg-white text-[#09090b] hover:bg-zinc-200 transition-all"
         >
           Start Free

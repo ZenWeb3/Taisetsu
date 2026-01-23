@@ -11,7 +11,8 @@ export default function CTA() {
           Start earning from your APIs in under a minute.
         </p>
         <Link
-          href="#"
+          href="https://t.me/@taisetsubot"
+          
           className="inline-block px-6 py-3.5 rounded-md text-base font-semibold bg-white text-[#09090b] hover:bg-zinc-200 hover:-translate-y-0.5 transition-all"
         >
           Launch App
